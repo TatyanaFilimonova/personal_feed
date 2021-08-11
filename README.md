@@ -7,6 +7,9 @@ async_logic.py - requesting and parsing data from the web APIs using aiohttp and
 
 db.py - DB interaction using asyncio and aiofiles
 
+To run server 
+$ python3 app.py
+
 DISCLAIMER: I only tested the vitality of code, didn't compare the efficiency with original "personal feed".
 I couldn't measure it cause internet connection here, on the island in Adriatic sea, is very unstaible and really slooooooow. I will be appretiate if you would do test and share the results. Thanks!
 
