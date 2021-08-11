@@ -5,7 +5,7 @@ from functools import lru_cache
 import aiofiles
 import asyncio
 
-from personal_feed.settings import ABSOLUTE_DB_PATH
+from settings import ABSOLUTE_DB_PATH
 
 from abc import ABCMeta, abstractmethod
 
