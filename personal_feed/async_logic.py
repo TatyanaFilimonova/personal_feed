@@ -1,6 +1,6 @@
 import aiohttp
 import asyncio
-from personal_feed.db import *
+from db import *
 
 async def _get_response(url, session, timeout=None):
     if timeout is None:
@@ -73,4 +73,4 @@ async def _get_feed(user: User):
 
 async def person_feed(user_id):
     user = await get_user_sync(user_id)
-    return await _get_feed(user)    
+    return await _get_feed(user)   
