@@ -17,4 +17,4 @@ I used:
 package.module import * 
 
 to avoid an error. When you pull the repository from GIT - do not rename the folder. 
-So, could you advise more elegant way to solve this problem?
+So, could you advise more elegant way of this problem solving?
