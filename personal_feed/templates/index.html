@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Feed for </title>
+</head>
+<body>
+<h1>Personal Feed for {{ user.name }}</h1>
+</br>
+<h3>Fact {{fact }}</h3>
+</br>
+<img src={{image}} alt="{{ user.type }}" width="1200" height="800" >
+</br>
+
+{% if weather %}
+<h3>Temperature {{ user.city.title() }}</h3>
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th width="100">Date</th>
+        <th width="60">Temp</th>
+        <th width="30">Humidity</th>
+        <th width="40">Visibility</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for day in weather %}
+        <tr>
+          <td> {{ day.date }}</td>
+          <td>{{ day.temp }}</td>
+          <td>{{ day.humidity }}</td>
+          <td>{{ day.visibility }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+</body>
+</html>

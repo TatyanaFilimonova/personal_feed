@@ -1,0 +1,52 @@
+{
+  "0": {
+    "name": "Morty",
+    "type": "dog",
+    "city": "dublin"
+  },
+  "1": {
+    "name": "Beth",
+    "type": "dog",
+    "city": "los angeles"
+  },
+  "2": {
+    "name": "Jerry",
+    "type": "cat",
+    "city": "dublin"
+  },
+  "3": {
+    "name": "Meg",
+    "type": "cat",
+    "city": "chicago"
+  },
+  "4": {
+    "name": "Vasya",
+    "type": "dog",
+    "city": "dublin"
+  },
+  "5": {
+    "name": "Stepa",
+    "type": "dog",
+    "city": "new york"
+  },
+  "6": {
+    "name": "Dima",
+    "type": "dog",
+    "city": "london"
+  },
+  "7": {
+    "name": "Ivan",
+    "type": "cat",
+    "city": "new york"
+  },
+  "8": {
+    "name": "James",
+    "type": "dog",
+    "city": "berlin"
+  },
+  "9": {
+    "name": "Petya",
+    "type": "cat",
+    "city": "chicago"
+  }
+}

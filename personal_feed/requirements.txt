@@ -1,0 +1,9 @@
+Flask==2.0.1
+requests==2.26.0
+
+# async stuff
+aiomisc==14.3.2
+aiohttp==3.7.4
+aiohttp_jinja2==1.4.2
+aiopath==0.5.11
+db==0.5.3
