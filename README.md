@@ -13,4 +13,4 @@ I couldn't measure it cause internet connection here, on the island in Adriatic 
 QUESTION/PROBLEM: 
 There were the problems with local modules import when running the app under the flask.
 I used package.module import * to avoid an error. When you pull the repository from GIT - do not rename the folder. 
-So, could you propose more elegant way to solve this problem?
+So, could you advise more elegant way to solve this problem?
