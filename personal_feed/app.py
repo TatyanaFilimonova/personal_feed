@@ -1,6 +1,6 @@
 import aiohttp_jinja2
 from aiohttp import web
-
+import jinja2
 from settings import *
 from db import UserDoesntExists
 from async_logic import person_feed
