@@ -1,5 +1,4 @@
 import aiohttp_jinja2
-import jinja2
 from aiohttp import web
 
 from settings import *
