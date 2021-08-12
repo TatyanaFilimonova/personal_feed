@@ -1,29 +1,38 @@
 import aiohttp
 import asyncio
+import time
 from db import *
 
-async def _get_response(url, session, timeout=None):
+async def _get_response(url_type, url, session, timeout=None):
     if timeout is None:
-        timeout = 3.0
+        timeout = 5.0
     try:
         async with session.get(url, timeout = timeout) as response:
             response = await session.get(url, timeout=timeout)
             res = await response.json()
     except TimeoutError:
         return None
-    return res
+    return url_type, res
 
 
 async def get_content(urls: dict):
-    res = {}    
+    res = {}
+    task_lst = []
+    result_lst = []
     async with aiohttp.ClientSession() as session:
-        for url_type in urls.keys():
-            res [url_type]  = await  _get_response(urls[url_type],  session,timeout=None)
-            if url_type == 'location_url':
-                _id = res[url_type][0]['woeid']
-                urls['weather_url'] = urls['weather_url']+str(_id)+'/'     
-    return res
+        location = asyncio.create_task(_get_response('location_url', urls['location_url'],  session,timeout=None))        
+        location = await asyncio.gather(location , loop=None, return_exceptions=False)
+        urls.pop('location_url')
+        for url_type in urls:
+            if url_type == 'weather_url':
+                urls['weather_url'] = urls['weather_url']+ str(location[0][1][0]['woeid'])
+            task_lst.append(asyncio.create_task(_get_response(url_type, urls[url_type],  session,timeout=None)))
+        result_lst = await asyncio.gather(*task_lst, loop=None, return_exceptions=False)
+        for r in result_lst:
+            res[r[0]] = r[1]
+        return res
 
+    
 def _get_urls_dict(user: User):
     city = user.city
     urls = {}
@@ -39,6 +48,7 @@ def _get_urls_dict(user: User):
     urls['location_url']    = f'https://www.metaweather.com/api/location/search/?query={city}'
     urls['weather_url']      = f'https://www.metaweather.com/api/location/'
     return urls
+
 
 def _get_weather_feed_user(weather): 
     dates_weather = weather
@@ -73,4 +83,4 @@ async def _get_feed(user: User):
 
 async def person_feed(user_id):
     user = await get_user_sync(user_id)
-    return await _get_feed(user)   
+    return await _get_feed(user)    
