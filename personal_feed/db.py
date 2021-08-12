@@ -60,8 +60,6 @@ class SyncJsonDataBase(AbstractDBFile):
 @lru_cache(maxsize=1)
 def get_db_sync():
     db = SyncJsonDataBase(ABSOLUTE_DB_PATH)
-    print(type(db))    
-    print(db._file_path)
     return db
 
 
