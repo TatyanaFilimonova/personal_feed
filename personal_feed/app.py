@@ -1,6 +1,8 @@
 import aiohttp_jinja2
-from aiohttp import web
 import jinja2
+from aiohttp import web
+import asyncio
+
 from settings import *
 from db import UserDoesntExists
 from async_logic import person_feed
@@ -28,7 +30,8 @@ async def feed(request):
                     'User ID should be integer. Please try again.'+
                     '</body>')
     try:
-        feed = await person_feed(int(user_id))
+        task = asyncio.create_task(person_feed(int(user_id)))
+        feed = await task
         return feed
     except UserDoesntExists:
         raise web.HTTPBadRequest(headers = {'Content-Type': 'text/html '},
